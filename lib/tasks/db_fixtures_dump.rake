@@ -30,7 +30,7 @@ namespace :db do
         model = m.constantize
         next unless model.ancestors.include?(ActiveRecord::Base)
 
-        entries = model.unscoped.all.order('id ASC')
+        entries = model.unscoped.where('1 != 0').order('id ASC')
         puts "Dumping model: #{m} (#{entries.length} entries)"
 
         increment = 1
